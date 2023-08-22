@@ -88,14 +88,13 @@ popularity_score_range = [4.5, 7]  # Adjust the range as needed
 # Altair chart
 chart = alt.Chart(df_melted).mark_line().encode(               
     alt.X('startYear:O'),       # Use 'O' for ordinal if startYear is categorical
-    alt.Y('popularity_score:Q'), # Use 'Q' for quantitative
+    alt.Y('popularity_score:Q', scale = alt.Scale(zero=False)), # Use 'Q' for quantitative
     alt.Color('genre:N'),       # Use 'N' for nominal to differentiate lines by genre
-).transform_filter(
-    alt.datum.popularity_score >= popularity_score_range[0] 
-    & alt.datum.popularity_score <= popularity_score_range[1]
 ).properties(
-    title='Popularity Score by Genre'
-)   
+    width=600,
+    height=400,
+    title='Genre Trends over Years'
+).interactive()
 
 
 st.altair_chart(chart,use_container_width=True)
