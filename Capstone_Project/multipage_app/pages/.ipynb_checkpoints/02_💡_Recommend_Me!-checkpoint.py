@@ -119,7 +119,7 @@ if recommender_engine=='Cosine Similarity':
 
     #Loading different recommendation dataset
     rec_df_path = str(Path(__file__).parents[2] / 'data/movies2013-2023_MF.parquet')
-    rec_df = pd.read_parquet('../../data/movies2013-2023_MF.parquet')\
+    rec_df = pd.read_parquet(rec_df_path)\
             .drop_duplicates('tconst')\
             .set_index('tconst')
     rec_df = rec_df.fillna('')

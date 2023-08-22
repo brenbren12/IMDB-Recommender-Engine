@@ -127,11 +127,15 @@ gb_genre_startyear = gb_genre_startyear[['startYear','genre_Romance','genre_Myst
 
 
 # Altair chart
-alt_chart = alt.Chart(gb_genre_startyear).mark_line().encode(
+df_melted2 = df.melt(id_vars=['startYear'], value_vars=['genre_Mystery', 'genre_Romance', 'genre_Horror', 'genre_Fantasy'],
+                    var_name='genre', value_name='popularity_score')
+
+# Altair chart
+alt_chart = alt.Chart(df_melted2).mark_line().encode(
     x='startYear:O',  # Using 'O' type for ordinal scale
-    y='value:Q',      # Using 'Q' type for quantitative scale
+    y='popularity_score:Q',  # Using 'Q' type for quantitative scale
     color='genre:N',
-    tooltip=['startYear:O', 'value:Q', 'genre:N']  # Tooltip with additional information
+    tooltip=['startYear:O', 'popularity_score:Q', 'genre:N']  # Tooltip with additional information
 ).properties(
     width=600,
     height=400,
