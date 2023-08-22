@@ -11,7 +11,7 @@ st.title("About the Author")
 col1_intro, col2_intro = st.columns([2,8])
 
 with col1_intro:
-    image_path_self1 = Path(__file__).parents[1] / 'images/self1.jpg'
+    image_path_self1 = str(Path(__file__).parents[1] / 'images/self1.jpg')
     st.image(image_path_self1)
     
 
@@ -62,7 +62,7 @@ st.markdown("     ")
 image_skills, desc_skills = st.columns([2,8])
 
 with image_skills:
-    image_path_stats_model_for_ml = Path(__file__).parents[1] / 'images/stats_model_for_ml_image.jpg'
+    image_path_stats_model_for_ml = str(Path(__file__).parents[1] / 'images/stats_model_for_ml_image.jpg')
     st.image(image_path_stats_model_for_ml)
 
 with desc_skills:
