@@ -11,7 +11,7 @@ st.title("About the Author")
 col1_intro, col2_intro = st.columns([2,8])
 
 with col1_intro:
-    image_path_self1 = 'images/self1.jpg'
+    image_path_self1 = Path(__file__).parents[1] / 'images/self1.jpg'
     st.image(image_path_self1)
     
 
