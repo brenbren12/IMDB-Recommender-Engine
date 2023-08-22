@@ -191,7 +191,8 @@ elif recommender_engine=='Collaborative Filtering (Tensorflow)':
     st.markdown("The following is the dataset used:")
     st.dataframe(df)
     
-    model = tf.keras.models.load_model('./models/reco_v2.h5')
+    model_path = str(Path(__file__).parents[2]/'models/reco_v2.h5')
+    model = tf.keras.models.load_model(model_path)
     plot_path=str(Path(__file__).parents[2]/'images/model.jpg')
     st.markdown("And the following is the model architecture:")
     st.image(plot_path, caption="Model Architecture")

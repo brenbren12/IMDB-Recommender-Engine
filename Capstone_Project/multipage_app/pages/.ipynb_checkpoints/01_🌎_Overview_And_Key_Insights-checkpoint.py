@@ -132,8 +132,8 @@ df_melted2 = gb_genre_startyear.melt(id_vars=['startYear'], value_vars=['genre_M
 
 # Altair chart
 alt_chart = alt.Chart(df_melted2).mark_line().encode(
-    x='startYear:O',  # Using 'O' type for ordinal scale
-    y='popularity_score:Q',  # Using 'Q' type for quantitative scale
+    x=alt.X('startYear:O'),  # Using 'O' type for ordinal scale
+    y=alt.Y('popularity_score:Q').scale(zero=False),  # Using 'Q' type for quantitative scale
     color='genre:N',
     tooltip=['startYear:O', 'popularity_score:Q', 'genre:N']  # Tooltip with additional information
 ).properties(
