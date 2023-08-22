@@ -79,11 +79,20 @@ with st.sidebar:
     df_melted = display_df.melt(id_vars='startYear', var_name='genre', value_name='popularity_score')
 
 
-chart = alt.Chart(df_melted).mark_line().encode(               
-    alt.X('startYear:O'),                              # Use 'O' for ordinal if startYear is categorical
-    alt.Y('popularity_score:Q'),     # Use 'Q' for quantitative
-    color='genre:N',                                   # Use 'N' for nominal to differentiate lines by genre
+    
+    
+    
+# Define the range for clipping the y-axis
+popularity_score_range = [4.5, 7]  # Adjust the range as needed
 
+# Altair chart
+chart = alt.Chart(df_melted).mark_line().encode(               
+    alt.X('startYear:O'),       # Use 'O' for ordinal if startYear is categorical
+    alt.Y('popularity_score:Q'), # Use 'Q' for quantitative
+    alt.Color('genre:N'),       # Use 'N' for nominal to differentiate lines by genre
+).transform_filter(
+    alt.datum.popularity_score >= popularity_score_range[0] 
+    & alt.datum.popularity_score <= popularity_score_range[1]
 ).properties(
     title='Popularity Score by Genre'
 )   
