@@ -14,7 +14,7 @@ from pathlib import Path
 
 
 
-image_path = '../../images/cinema.jpg'
+image_path = str(Path(__file__).parents[2] / 'images/cinema.jpg')
 
 st.image(image_path, use_column_width = True)
 
