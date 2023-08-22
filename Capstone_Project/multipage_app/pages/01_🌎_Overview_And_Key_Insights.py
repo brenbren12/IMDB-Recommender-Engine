@@ -106,39 +106,120 @@ st.markdown("""
 """)
 
 
-columns_to_drop = ['genres', 'titleType', 'originalTitle', 'runtimeMinutes', 'nconst', 'category', 'job', 'directors', 'writers', 'titleId', 'title', 'region_count']
-df2 = df.drop(columns=columns_to_drop)
+# columns_to_drop = ['genres', 'titleType', 'originalTitle', 'runtimeMinutes', 'nconst', 'category', 'job', 'directors', 'writers', 'titleId', 'title', 'region_count']
+# df2 = df.drop(columns=columns_to_drop)
 
-df_melted = df2.melt(id_vars=['tconst', 'primaryTitle', 'popularity_score', 'startYear'], 
-                    value_vars=[col for col in df2.columns if col.startswith('genre_')],
-                    var_name='genre', value_name='value')
+# df_melted = df2.melt(id_vars=['tconst', 'primaryTitle', 'popularity_score', 'startYear'], 
+#                     value_vars=[col for col in df2.columns if col.startswith('genre_')],
+#                     var_name='genre', value_name='value')
 
-df_filtered = df_melted[df_melted['value']==1]
+# df_filtered = df_melted[df_melted['value']==1]
 
-gb_genre_startyear = df_filtered.groupby(['genre', 'startYear'])['popularity_score']\
-                                .mean()\
-                                .reset_index()\
-                                .pivot(index='startYear', columns='genre', values='popularity_score')\
-                                .reset_index()
+# gb_genre_startyear = df_filtered.groupby(['genre', 'startYear'])['popularity_score']\
+#                                 .mean()\
+#                                 .reset_index()\
+#                                 .pivot(index='startYear', columns='genre', values='popularity_score')\
+#                                 .reset_index()
 
-gb_genre_startyear = gb_genre_startyear[['startYear','genre_Romance','genre_Mystery',\
-                                         'genre_Horror','genre_Fantasy']]
+# gb_genre_startyear = gb_genre_startyear[['startYear','genre_Romance','genre_Mystery',\
+#                                          'genre_Horror','genre_Fantasy']]
 
 
-# Altair chart
-alt_chart = alt.Chart(gb_genre_startyear).mark_line().encode(
-    x=alt.X('startYear:O', title="Year"),  # Using 'O' type for ordinal scale
-    y=alt.Y('value:Q',title="Popularity Score"),      # Using 'Q' type for quantitative scale
-    color='genre:N'
-).properties(
-    width=600,
-    height=400,
-    title='Genre Trends over Years'
-)
 
-# Display the Altair chart using st.altair_chart()
-st.markdown("### Genre Trends over Years")
-st.altair_chart(alt_chart, use_container_width=True)
+
+col1_sec2, col2_sec2 = st.columns([2,8])
+
+with col1_sec2:
+    genre_cols = [col.replace("genre_",'') for col in df.columns if col.startswith('genre_')]
+
+
+    with st.sidebar:
+        selector = pd.DataFrame({
+            "genre":genre_cols,
+            "genre_selection":[True if genre=="Action" else False for genre in genre_cols]
+        })
+
+
+        selector['genre'] = genre_cols
+        edited_selector = st.data_editor(selector,\
+                                        column_config = {
+
+            "genre":st.column_config.Column(
+                label="Genre"
+
+            ),
+            "genre_selection": st.column_config.CheckboxColumn(
+            label="Select Genre",
+            help = "Click on the checkbox to select the genre to be included in the visualization below",
+            width="small",
+            default=False
+            )   
+        },
+            disabled = ["genre"],
+            hide_index=True)
+
+        cols_selected = edited_selector.loc[edited_selector['genre_selection']==True]['genre'].tolist()
+
+        st.session_state.cols_selected = cols_selected #Saves columns selected as a list type
+
+        genres_of_interest = ["genre_"+col for col in st.session_state.cols_selected]
+
+        display_df = pd.DataFrame({"startYear":[num for num in range(2014,2024)]})
+
+
+
+        for genre in genres_of_interest:
+            gb = df.groupby(['startYear',genre])
+            means = gb['popularity_score'].mean().reset_index()
+            means.rename(columns={'popularity_score':f"{genre.replace('genre_','')}"}, inplace=True)
+            means = means[means[genre]==1].set_index('startYear').drop(genre,axis=1)
+            display_df = display_df.merge(means, how='right',left_index=True, right_index=True)
+
+        display_df.index = display_df.index.astype('string')
+
+        if 'startYear' in display_df.columns:
+            display_df.drop('startYear',axis=1,inplace=True)
+
+        display_df.reset_index(inplace=True)
+
+        df_melted = display_df.melt(id_vars='startYear', var_name='genre', value_name='popularity_score')
+
+
+with col2_sec2:
+    chart = alt.Chart(df_melted).mark_line().encode(               
+        alt.X('startYear:O'),                              # Use 'O' for ordinal if startYear is categorical
+        alt.Y('popularity_score:Q').scale(zero=False),     # Use 'Q' for quantitative
+        color='genre:N',                                   # Use 'N' for nominal to differentiate lines by genre
+
+    ).properties(
+        title='Popularity Score by Genre'
+    )   
+
+
+    st.altair_chart(chart,use_container_width=True)
+
+
+
+
+
+
+
+
+
+# # Altair chart
+# alt_chart = alt.Chart(gb_genre_startyear).mark_line().encode(
+#     x=alt.X('startYear:O', title="Year"),  # Using 'O' type for ordinal scale
+#     y=alt.Y('value:Q',title="Popularity Score"),      # Using 'Q' type for quantitative scale
+#     color='genre:N'
+# ).properties(
+#     width=600,
+#     height=400,
+#     title='Genre Trends over Years'
+# )
+
+# # Display the Altair chart using st.altair_chart()
+# st.markdown("### Genre Trends over Years")
+# st.altair_chart(alt_chart, use_container_width=True)
 
 
 # plt.figure(figsize=(10, 6))
