@@ -3,6 +3,7 @@ import pandas as pd
 from annotated_text import annotated_text
 import matplotlib.pyplot as plt
 from pathlib import Path
+import altair as alt
 
 # List down the key findings of your project here. 
 # Background
@@ -123,22 +124,39 @@ gb_genre_startyear = df_filtered.groupby(['genre', 'startYear'])['popularity_sco
 gb_genre_startyear = gb_genre_startyear[['startYear','genre_Romance','genre_Mystery',\
                                          'genre_Horror','genre_Fantasy']]
 
-plt.figure(figsize=(10, 6))
-plt.plot(gb_genre_startyear['startYear'], gb_genre_startyear['genre_Romance'], label='Romance')
-plt.plot(gb_genre_startyear['startYear'], gb_genre_startyear['genre_Mystery'], label='Mystery')
-plt.plot(gb_genre_startyear['startYear'], gb_genre_startyear['genre_Horror'], label='Horror')
-plt.plot(gb_genre_startyear['startYear'], gb_genre_startyear['genre_Fantasy'], label='Fantasy')
-plt.xlabel('Year')
-plt.ylabel('Popularity Score')
-plt.title('Genre Trends over Years')
-plt.legend()
-plt.show()
 
-image_stream = io.BytesIO()
-plt.savefig(image_stream, format='png')
-plt.close()
+# Altair chart
+alt_chart = alt.Chart(df).mark_line().encode(
+    x='startYear',
+    y=alt.Y('value', title='Popularity Score'),
+    color='genre:N'
+).properties(
+    width=600,
+    height=400,
+    title='Genre Trends over Years'
+)
 
-st.image(image_stream)
+# Display the Altair chart using st.altair_chart()
+st.markdown("### Genre Trends over Years")
+st.altair_chart(alt_chart, use_container_width=True)
+
+
+# plt.figure(figsize=(10, 6))
+# plt.plot(gb_genre_startyear['startYear'], gb_genre_startyear['genre_Romance'], label='Romance')
+# plt.plot(gb_genre_startyear['startYear'], gb_genre_startyear['genre_Mystery'], label='Mystery')
+# plt.plot(gb_genre_startyear['startYear'], gb_genre_startyear['genre_Horror'], label='Horror')
+# plt.plot(gb_genre_startyear['startYear'], gb_genre_startyear['genre_Fantasy'], label='Fantasy')
+# plt.xlabel('Year')
+# plt.ylabel('Popularity Score')
+# plt.title('Genre Trends over Years')
+# plt.legend()
+# plt.show()
+
+# image_stream = io.BytesIO()
+# plt.savefig(image_stream, format='png')
+# plt.close()
+
+# st.image(image_stream)
 
 # st.line_chart(data=gb_genre_startyear, x='startYear')
 
