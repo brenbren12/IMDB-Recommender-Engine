@@ -127,7 +127,7 @@ gb_genre_startyear = gb_genre_startyear[['startYear','genre_Romance','genre_Myst
 
 
 # Altair chart
-df_melted2 = df.melt(id_vars=['startYear'], value_vars=['genre_Mystery', 'genre_Romance', 'genre_Horror', 'genre_Fantasy'],
+df_melted2 = gb_genre_startyear.melt(id_vars=['startYear'], value_vars=['genre_Mystery', 'genre_Romance', 'genre_Horror', 'genre_Fantasy'],
                     var_name='genre', value_name='popularity_score')
 
 # Altair chart
