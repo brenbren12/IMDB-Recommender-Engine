@@ -134,7 +134,12 @@ plt.ylabel('Popularity Score')
 plt.title('Genre Trends over Years')
 plt.legend()
 plt.show()
-st.pyplot(plt)
+
+image_stream = io.BytesIO()
+plt.savefig(image_stream, format='png')
+plt.close()
+
+st.image(image_stream)
 
 # st.line_chart(data=gb_genre_startyear, x='startYear')
 
