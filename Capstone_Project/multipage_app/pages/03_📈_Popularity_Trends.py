@@ -81,7 +81,7 @@ with st.sidebar:
 
 chart = alt.Chart(df_melted).mark_line().encode(               
     alt.X('startYear:O'),                              # Use 'O' for ordinal if startYear is categorical
-    alt.Y('popularity_score:Q').scale(zero=False),     # Use 'Q' for quantitative
+    alt.Y('popularity_score:Q'),     # Use 'Q' for quantitative
     color='genre:N',                                   # Use 'N' for nominal to differentiate lines by genre
 
 ).properties(
