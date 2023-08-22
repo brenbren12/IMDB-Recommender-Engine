@@ -127,7 +127,7 @@ gb_genre_startyear = gb_genre_startyear[['startYear','genre_Romance','genre_Myst
 
 # Altair chart
 alt_chart = alt.Chart(df).mark_line().encode(
-    x='startYear',
+    x=alt.X('startYear:O', title="Start Year"),
     y=alt.Y('value', title='Popularity Score'),
     color='genre:N'
 ).properties(
