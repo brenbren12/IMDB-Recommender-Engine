@@ -183,7 +183,7 @@ if recommender_engine=='Cosine Similarity':
 #-----------------------------------------------------------------------------------------------------------------------------------------------#
 elif recommender_engine=='Collaborative Filtering (Tensorflow)':
     df_path = str(Path(__file__).parents[2] / 'data/ML1m_merged.parquet')
-    df = pd.read_parquet('../../data/ML1m_merged.parquet')
+    df = pd.read_parquet(df_path)
     if "Unnamed: 0" in df.columns:
         df.drop("Unnamed: 0", axis=1,inplace=True)
     
@@ -192,7 +192,7 @@ elif recommender_engine=='Collaborative Filtering (Tensorflow)':
     st.dataframe(df)
     
     model = tf.keras.models.load_model('./models/reco_v2.h5')
-    plot_path='../../images/model.jpg'
+    plot_path=str(Path(__file__).parents[2]/'images/model.jpg')
     st.markdown("And the following is the model architecture:")
     st.image(plot_path, caption="Model Architecture")
     st.caption("This collaborative filtering model was trained using keras, with a validation MSE of 0.94.")
