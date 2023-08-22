@@ -22,7 +22,6 @@ st.image(image_path, use_column_width = True)
 #Loading DataFrames--------------------------------------------------------------------------------------------------------##
 df_path = str(Path(__file__).parents[2] / 'data/movies2013-2023.parquet')
 movielens_1m_path = str(Path(__file__).parents[2] / 'data/ML1m_merged.parquet')
-
 df= pd.read_parquet(df_path).drop(columns=['isAdult','characters'], axis=1)
 movielens_1m = pd.read_parquet(movielens_1m_path)
 
@@ -88,12 +87,12 @@ st.markdown("""
 
 The following are the key insights from the data analysis:
 
-1. IMDB has been seeing a **steady decline** in the average number of voters on films year after year. One possible reason is due to increased competition by streaming platforms (eg Netflix, Disney+, Apple TV etc) that also provides web interfaces for exploration of films, similar to that of IMDB.
+1. IMDB has been seeing a **steady decline** in the total number of voters on films year after year. One possible reason is due to increased competition by streaming platforms (eg Netflix, Disney+, Apple TV etc) that also provides web interfaces for exploration of films, similar to that of IMDB.
 
 """)
 
 
-gb_year = df.groupby('startYear')['numVotes'].mean().reset_index()
+gb_year = df.groupby('startYear')['numVotes'].sum().reset_index()
 
 st.line_chart(gb_year.set_index('startYear'))
 
@@ -101,7 +100,7 @@ st.line_chart(gb_year.set_index('startYear'))
 
 
 st.markdown("""
-2. Genres such as _mystery, romance, horror and fantasy_ has been seeing a gradual increase in viewer popularity recently.
+2. Genres such as mystery, romance, horror and fantasy has been seeing a gradual increase in viewer popularity recently.
 
 """)
 
