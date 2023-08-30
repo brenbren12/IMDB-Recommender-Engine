@@ -27,10 +27,10 @@ There are 2 datasets included in the [`data`](./Capstone_Project/data/) folder f
 
 
 ### Recommender Engine
-
-The author created 2 recommender engines (non-personalised attribute based engine, and a user-based collaborative filtering engine), hosted on the 'Recommend Me!' page of the Streamlit application.
+I created 2 recommender engines (non-personalised attribute based engine, and a user-based collaborative filtering engine), hosted on the 'Recommend Me!' page of the Streamlit application.
 
 #### What goes on under the hood
+##### Cosine Similarity Algorithm
 The first recommender engine uses a combination of **cosine similarity** (based on the genres selected), followed by filtering out the **top 20 most similar selections** when compared with the 2 user inputs. Next, selections that have **ratings of less than 5 stars are automatically filtered out**, follwed by resorting the selection by the **recommendation propensity** column of the dataset.
 <br><br>
 The recommendation propensity is determined by 
@@ -48,10 +48,23 @@ R is the average/mean rating of the movie, <br>
 m is the minumum votes required for the movie to be considered (ie 1000) <br>
 C is the average/mean rating across all movies<br><br>
 
-And the recommendation propensity score takes into account the popularity score, together with a penalizing term of $$k*\frac{ageoffilm}{yearrange}$$, where k is an arbitrary constant, year range is, in years, the difference between the earliest and most recent film for the dataset considered, and age of film is taken relative to the earliest film of the dataset.<br><br>
+And the recommendation propensity score takes into account the popularity score, together with a penalizing term of $$k*\frac{ageoffilm}{yearrange}$$, 
+where k is an arbitrary constant, <br>
+year range is, in years, the difference between the earliest and most recent film for the dataset considered, <br>
+and age of film is taken relative to the earliest film of the dataset.<br><br>
 
 #### Popularity score
 m is added to the denominator of the first term to reduce the weightage the mean rating has on the overall popularity score, as well as increase the weightage of the global mean rating in the second term. In other words, should there be too few voters of a particular movie, the popularity score of the movie will tend closer to the global mean across all movies.
 
 #### Recommendation propensity
 The recommendation propensity further takes into account the time factor, with the consideration that older movies may not be as enjoyed as newer movies. Hence, a penalising factor is added to reduce the popularity score, with k being varied to adjust the penalization strength.
+
+
+##### User-Based Collaborative Filtering model using Tensorflow
+[](Capstone_Project/images/model.jpg)
+
+Using the Movie Lens 1m dataset, I built a user-based collaborative filtering model. The model had a validaton MSE of 0.94, and had the above model architecture. The model takes 2 inputs, a user id and a movie id, and then is passed through several layers, which includes:
+1. An embedding layer for each input with a latent dimension of 5
+2. A flattening and concatenation layer
+3. A series of Dense and Dropout layers alternated
+4. A Rectified Linear Unit function before finally outputting a predicted rating
