@@ -52,7 +52,7 @@ if recommender_engine=='Cosine Similarity':
 
     st.write("""
 
-    First, please search for a movie (between 2013 to 2022) below:
+    First, please search for a movie (between 2013 to 2022) below. After selecting 2 selections (please do not select duplicate selections), scroll to the bottom of the page where your selections will be saved, and click on Recommend Me!
 
     """)
 
