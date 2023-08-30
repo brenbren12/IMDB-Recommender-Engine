@@ -44,15 +44,15 @@ st.markdown("""
 )
 
 
-annotated_text("The film industry has historically experienced fluctuations of both booms and busts. However, with the advent of streaming services like Netflix and Disney+, movies are", ("continually gaining popularity and","","#afa"),(" exposure","","#afa")," through such streaming services. The author, hence, chose to explore into data revolving the movie industry.")
+st.markdown("""The film industry has historically experienced fluctuations of both booms and busts. However, with the advent of streaming services like Netflix and Disney+, movies are continually gaining popularity and exposure through such streaming services. The author, hence, chose to explore into data revolving the movie industry.""")
 
 
-annotated_text("Similarly, with ",("data and information growing in abundance","","#afa",""), 
-               "the author sees the value of recommender systems appreciating over time. Therefore, this project is aimed at ")
+st.markdown("""Similarly, with **data and information growing in abundance**, 
+               I see the value of recommender systems appreciating over time. Therefore, this project is aimed at """)
 
-annotated_text("1. Showcasing an ",("applicative example","","#fea")," on how ",("recommender systems","","#fea")," can be applied to movie and films and")
+st.markdown("1. Showcasing an **applicative example** on how recommender systems can be applied to movie and films and")
                
-annotated_text("2. Conducting a ",("comprehensive analysis","","#fea")," to ",("uncover trends and insights","","#fea")," of films between 2013 to 2023")
+st.markdown("2. Conducting a **comprehensive analysis** to uncover trends and insights of films between 2013 to 2023")
 
 ##------------------------------------------------------------------------------------------------------------------------------------------##
 ##Datasets used
