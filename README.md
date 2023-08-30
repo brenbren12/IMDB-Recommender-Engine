@@ -10,14 +10,23 @@ The film industry has historically experienced fluctuations of both booms and bu
 
 ### Problem Statement
 
-As we usher in an information era, the average consumer is often times overloaded with data and information. From organizations being willing to pay copious amounts of money for online brand visibility through advertisements, to ecommerce/search engines presenting hundreds or even thousands of results with valid search keywords, the importance of distilling and presenting key, relevant information has become more important than ever. Recommender engines play a key role in today's information-rich climate, hence the author chose to explore deeper into the application of recommender engines on the IMDb dataset.
+[The paradox of choice is a phenomenon where an abundance of options can counterintuitively lead to less happiness, less satisfaction, and hamper the ability to make a decision.](https://modelthinkers.com/mental-model/paradox-of-choice#:~:text=The%20paradox%20of%20choice%20is,ability%20to%20make%20a%20decision) 
+As we usher in an information era, the average consumer is often times overloaded with data and information and hence, the importance of distilling and presenting key, relevant information has become more important than ever. Recommender engines play a key role in today's information-rich climate, hence I chose to explore deeper into the application of recommender engines, particularly on readily-available datasets such as the IMDb dataset and the Movie Lens 1m dataset.
+
+
+### Objective of the Project
+With the problem statements setting the context of the project, its objectives are therefore to
+1. Build recommender engines that can streamline the decision making processes
+2. Conduct some exploratory data analysis on the existing datasets to uncover insights that can appeal to stakeholders in the movie industry
+
+T
 
 
 ### Datasets
 
 #### Provided Data
 
-There are 2 datasets included in the [`data`](./data/) folder for this project. 
+There are 2 datasets included in the [`data`](./Capstone_Project/data/) folder for this project. 
 
 * [IMDb dataset](./data/movies2013-2023.parquet): The IMDb dataset, which is primarily used for data analysis and the cosine similarity recommendation algorithm.
 * [Movie Lens 1m dataset](./data/ML1m_merged.parquet): A dataset retrieved from Group Lens, primarily to train a user-based collaborative filtering model
