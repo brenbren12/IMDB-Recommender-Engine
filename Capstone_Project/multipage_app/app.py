@@ -16,7 +16,7 @@ with col1_intro:
     
 
 with col2_intro:
-    st.markdown("Hello! My name is Brendan, and I am passionate about becoming a proficient data scientist.")
+    st.markdown("Hello! My name is [Brendan](https://www.linkedin.com/in/brendan-tan/), and I am passionate about becoming a proficient data scientist.")
 
     st.markdown("My journey into the world of data science began in April 2022 when I discovered a fascination for crafting code that not only generates insightful dashboards for business intelligence but also drives the creation of powerful machine learning models. This revelation came to me during a simple online bootcamp, igniting a spark of curiosity that would shape my career path.")
 

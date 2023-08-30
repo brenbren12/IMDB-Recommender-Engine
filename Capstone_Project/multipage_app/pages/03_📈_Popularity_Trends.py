@@ -14,7 +14,7 @@ st.write("""
 
 # Popularity Trends of Movies
 
-Witness the evolution of cinema through the lens of IMDb ratings. On this page, you can explore how the popularity scores of movies have trended over time. Use the interactive charts to see the highs and lows of cinematic achievements, and perhaps discover some timeless classics or hidden gems.
+On this page, you can explore how the popularity scores of movies have trended over time. Use the interactive charts below to see the highs and lows of cinematic achievements.
 
 
 """)
