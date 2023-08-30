@@ -61,7 +61,7 @@ The recommendation propensity further takes into account the time factor, with t
 
 
 ##### User-Based Collaborative Filtering model using Tensorflow
-[](Capstone_Project/images/model.jpg)
+![](./Capstone_Project/images/model.jpg)
 
 Using the Movie Lens 1m dataset, I built a user-based collaborative filtering model. The model had a validaton MSE of 0.94, and had the above model architecture. The model takes 2 inputs, a user id and a movie id, and then is passed through several layers, which includes:
 1. An embedding layer for each input with a latent dimension of 5
