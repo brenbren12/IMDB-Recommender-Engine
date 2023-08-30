@@ -16,10 +16,16 @@ with col1_intro:
     
 
 with col2_intro:
-    st.markdown("Hello! My name is Brendan, an aspiring data scientist.")
-    st.markdown("I first started my data science journey in April 2022, where I first discovered an interest in both writing code that can produce dashboards that can provide business intelligence, as well as creating machine learning models, through a simple online bootcamp.")
-    st.markdown("From there, I decided to pursue a data science career, by first equipping myself with data science competencies from a General Assembly bootcamp.")
-    st.markdown("In today's climate, technology changes faster than ever. As such, I strongly believe in constantly upskilling and learning, to stay abreast the latest advents in technology and to stay relevant.")
+    st.markdown("Hello! My name is Brendan, and I am passionate about becoming a proficient data scientist.")
+
+    st.markdown("My journey into the world of data science began in April 2022 when I discovered a fascination for crafting code that not only generates insightful dashboards for business intelligence but also drives the creation of powerful machine learning models. This revelation came to me during a simple online bootcamp, igniting a spark of curiosity that would shape my career path.")
+
+    st.markdown("Motivated by this newfound interest, I embarked on my journey to carve out a career in data science. To equip myself with the essential skills and knowledge, I enrolled in a data science program at General Assembly. This intensive experience provided me with the foundational competencies required to excel in the field.")
+
+    st.markdown("In today's rapidly evolving landscape of technology, adaptation is key. I firmly believe in the continuous pursuit of upskilling and learning to remain at the forefront of technological advancements. By staying attuned to the latest breakthroughs, I aim to consistently contribute innovative solutions that address real-world challenges.")
+
+    st.markdown("Please feel free to dive into the projects and insights I've shared!")
+
 
 
 
@@ -66,10 +72,13 @@ with image_skills:
     st.image(image_path_stats_model_for_ml)
 
 with desc_skills:
-    st.markdown("In the pipelines, I am currently studying on the statistical theories behind the different machine learning models, in order to better understand how these ML models work and have better grounds to tune and optimize the models that I build.")
+    st.markdown("As part of my ongoing learning journey, I am dedicated to deepening my understanding of the statistical theories that underpin various machine learning models. This endeavor allows me to gain a robust foundation, enabling me to fine-tune and optimize the models I construct.")
 
 st.markdown("### About This Project")
-st.markdown("While theory is important, I believe it is equally important to put theory to practice. Hence, I built this project as a test of my abilities to incorporate what I have learnt on data manipulation, visualization and alos machine learning, into a web application using streamlit. I also chose to focus on **recommender systems** as my machine learning model of choice (in the page \"Recommend Me!\"), because I can see the growing relevance of **recommender systems** given the increasing abundance of data.")
+st.markdown("While theoretical knowledge forms a strong base, I firmly believe in the value of practical application. This belief drove me to develop this project, showcasing my ability to translate my learnings in data manipulation, visualization, and machine learning into a tangible web application using Streamlit. Notably, I chose to focus on **recommender systems** as my preferred machine learning model (demonstrated in the \"Recommend Me!\" page), given the escalating significance of **recommender systems** in the face of increasing data availability.")
+
+st.markdown("This project reflects my commitment to bridging theory and practice, and serves as a testament to my dedication to honing my skills in data science. By continually seeking opportunities to implement what I learn, I aspire to contribute effectively to the ever-evolving landscape of technology and data-driven solutions.")
+
 
 st.markdown("")
 

@@ -14,6 +14,7 @@ from pathlib import Path
 
 ## FUTURE IMPROVEMENTS
 ## 1. Train using ML 20m dataset
+## 2. Add a clear cache button
 
 
 #Instantiating Cinemagoer API
