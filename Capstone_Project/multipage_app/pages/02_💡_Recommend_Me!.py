@@ -93,7 +93,7 @@ if recommender_engine=='Cosine Similarity':
                 st.markdown(f"{row['genres']}")
                 st.markdown(f"Year Aired: {row['startYear']}")
                  # Add a save button to save the movie
-                if st.button(f"Select {row['primaryTitle']}"):
+                if if st.button(f"Select {row['primaryTitle']}", key=f"button_{row['tconst']}")::
                     if row['tconst'] in st.session_state.saved_movie_id:
                         st.error("Selection already exists")
                     else:
