@@ -67,5 +67,5 @@ Using the Movie Lens 1m dataset, I built a user-based collaborative filtering mo
 1. An embedding layer for each input with a latent dimension of 5
 2. A flattening and concatenation layer
 3. A series of Dense and Dropout layers alternated
-4. A Rectified Linear Unit activation function
-5. A normalization layer before finally outputting a predicted rating
+4. A normalization layer before finally outputting a predicted rating
+5. A Rectified Linear Unit activation function
