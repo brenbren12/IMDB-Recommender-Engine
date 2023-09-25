@@ -57,7 +57,9 @@ if recommender_engine=='Cosine Similarity':
 
     """)
 
-
+    # Setting modal initial state
+    modal_state = False
+    
     # Search Function
     
     df_path = str(Path(__file__).parents[2] / 'data/movies2013-2023.parquet')
@@ -101,8 +103,14 @@ if recommender_engine=='Cosine Similarity':
                         modal = Modal(key="Successful Selection",title="Successful Selection")
                         st.session_state.saved_movies.append(row['primaryTitle'])
                         st.session_state.saved_movie_id.append(row['tconst'])
-                        with modal.container():
+                        modal_state = True
+                        
+                    while modal_state:
+                        modal.open()
+                        if modal.is_open():
                             st.markdown(f"You have selected {row['primaryTitle']}. Check the data table below to see your selection")
+                            
+                        
                         
 
     # Instantiating empty list to store movie IDs
