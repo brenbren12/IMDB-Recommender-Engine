@@ -102,7 +102,7 @@ if recommender_engine=='Cosine Similarity':
                         st.session_state.saved_movies.append(row['primaryTitle'])
                         st.session_state.saved_movie_id.append(row['tconst'])
                         with modal.container():
-                            st.markdown(f'You have selected {row['primaryTitle']}. Check the data table below to see your selection')
+                            st.markdown(f"You have selected {row['primaryTitle']}. Check the data table below to see your selection")
                         
 
     # Instantiating empty list to store movie IDs
