@@ -44,7 +44,7 @@ st.markdown("""
 )
 
 
-st.markdown("""The film industry has historically experienced fluctuations of both booms and busts. However, with the advent of streaming services like Netflix and Disney+, movies are continually gaining popularity and exposure through such streaming services. The author, hence, chose to explore into data revolving the movie industry.""")
+st.markdown("""The film industry has historically experienced fluctuations of both booms and busts. However, with the advent of streaming services like Netflix and Disney+, movies are continually gaining popularity and exposure through such streaming services. I, hence, chose to explore into data revolving the movie industry.""")
 
 
 st.markdown("""Similarly, with **data and information growing in abundance**, 

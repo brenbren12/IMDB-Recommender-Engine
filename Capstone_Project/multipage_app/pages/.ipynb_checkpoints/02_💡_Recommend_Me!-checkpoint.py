@@ -38,7 +38,7 @@ st.write("""
 
 # Recommend Me!
 
-Welcome to the movie recommender system! As an aspiring data scientist with a passion for machine learning, the author leveraged on cosine similarity, as well as tensorflow, to build this personalized recommendation engine. This tool hopes to serve as a real-world demonstration of how I approach problems and create solutions.
+Welcome to the movie recommender system! As an aspiring data scientist with a passion for machine learning, I leveraged on cosine similarity, as well as tensorflow, to build this personalized recommendation engine. This tool hopes to serve as a real-world demonstration of how I approach problems and create solutions.
 
 """)
 
@@ -197,7 +197,7 @@ elif recommender_engine=='Collaborative Filtering (Tensorflow)':
     if "Unnamed: 0" in df.columns:
         df.drop("Unnamed: 0", axis=1,inplace=True)
     
-    st.markdown("**The Author used the Movie Lens 1m dataset, together with keras (tensorflow), to train this user-based collaborative filtering model.**")
+    st.markdown("**I used the Movie Lens 1m dataset, together with keras (tensorflow), to train this user-based collaborative filtering model.**")
     st.markdown("The following is the dataset used:")
     st.dataframe(df)
     
@@ -218,7 +218,7 @@ elif recommender_engine=='Collaborative Filtering (Tensorflow)':
     }
     </style>
     ''', unsafe_allow_html=True)
-    st.markdown("The first are the respective embedding layers to convert the inputs into tensors. The author chose 5 as the number of latent dimensions for the model, considering the following dimensions of considerations while rating a movie:")
+    st.markdown("The first are the respective embedding layers to convert the inputs into tensors. I chose 5 as the number of latent dimensions for the model, considering the following dimensions of considerations while rating a movie:")
     
     st.markdown("- Genre")
     st.markdown("- Actors")
