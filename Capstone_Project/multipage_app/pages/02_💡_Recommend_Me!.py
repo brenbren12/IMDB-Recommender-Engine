@@ -96,10 +96,9 @@ if recommender_engine=='Cosine Similarity':
 
                 st.markdown(f"{row['genres']}")
                 st.markdown(f"Year Aired: {row['startYear']}")
-                 # Add a save button to save the movie
                 
-                open_modal = st.button(f"Select {row['primaryTitle']}", key=f"button_{row['tconst']}")
-                if open_modal:
+                # Add a save button to save the movie
+                if st.button(f"Select {row['primaryTitle']}", key=f"button_{row['tconst']}"):
                     if row['tconst'] in st.session_state.saved_movie_id:
                         st.error("Selection already exists")
                     else:
@@ -107,12 +106,10 @@ if recommender_engine=='Cosine Similarity':
                         st.session_state.saved_movies.append(row['primaryTitle'])
                         st.session_state.saved_movie_id.append(row['tconst'])
                         # modal_state = True
-                        st.session_state.openmodel = True
-                        
-                    if st.session_state.openmodel = True:
                         modal.open()
                         # if modal.is_open():
                         st.markdown(f"You have selected {row['primaryTitle']}. Check the data table below to see your selection")
+                        modal.close()
                             
                         
                         
