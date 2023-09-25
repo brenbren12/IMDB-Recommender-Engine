@@ -1,4 +1,5 @@
 import streamlit as st
+from streamlit_modal import Modal
 import pandas as pd
 from imdb import Cinemagoer
 
@@ -97,8 +98,12 @@ if recommender_engine=='Cosine Similarity':
                     if row['tconst'] in st.session_state.saved_movie_id:
                         st.error("Selection already exists")
                     else:
+                        modal = Modal(key="Successful Selection",title="Successful Selection")
                         st.session_state.saved_movies.append(row['primaryTitle'])
                         st.session_state.saved_movie_id.append(row['tconst'])
+                        with modal.container():
+                            st.markdown(f'You have selected {row['primaryTitle']}. Check the data table below to see your selection')
+                        
 
     # Instantiating empty list to store movie IDs
     selected_movie_ids = []
