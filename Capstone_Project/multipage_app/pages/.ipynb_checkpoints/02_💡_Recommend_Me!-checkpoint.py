@@ -64,6 +64,7 @@ if recommender_engine=='Cosine Similarity':
     # Search Function
     
     df_path = str(Path(__file__).parents[2] / 'data/movies2013-2023.parquet')
+    # df_path = '../../data/movies2013-2023.parquet'
     df = pd.read_parquet(df_path)
 
     df['primaryTitle'] = df['primaryTitle'].str.title()
@@ -102,15 +103,9 @@ if recommender_engine=='Cosine Similarity':
                     if row['tconst'] in st.session_state.saved_movie_id:
                         st.error("Selection already exists")
                     else:
-                        modal = Modal(key="Successful Selection",title="Successful Selection")
                         st.session_state.saved_movies.append(row['primaryTitle'])
                         st.session_state.saved_movie_id.append(row['tconst'])
-                        # modal_state = True
-                        modal.open()
-                        # if modal.is_open():
-                        st.markdown(f"You have selected {row['primaryTitle']}. Check the data table below to see your selection")
-                        modal.close()
-                            
+                        st.error("Selection added")
                         
                         
 
