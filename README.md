@@ -31,11 +31,11 @@ The first recommender engine uses a combination of **cosine similarity** (based 
 <br><br>
 The recommendation propensity is determined by 
 
-$$recommendation \s propensity = popularity \s score - k*\frac{ageoffilm}{yearrange}$$
+$$recommendation propensity = popularity score - k*\frac{ageoffilm}{yearrange}$$
 
 and 
 
-$$popularity \s score = R*\frac{v}{v+m} + C * \frac{m}{v+m}$$
+$$popularity score = R*\frac{v}{v+m} + C * \frac{m}{v+m}$$
 
 <br><br>
 The popularity score takes into consideration:<br>
