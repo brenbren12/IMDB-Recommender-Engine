@@ -1,7 +1,3 @@
-### Interactive Streamlit interface
-I hosted the findings and recommender engines created for this project on Streamlit, a python package that facilitates the development of web apps. [Check it out here!](https://movies-recommender-engine.streamlit.app/)
-
-
 ### Overview
 
 The film industry has historically experienced fluctuations of both booms and busts. However, with the advent of streaming services like Netflix and Disney+, films and movies are continually gaining popularity and more exposure through such streaming services. The author, hence, chose to explore into data revolving the movie industry. 
